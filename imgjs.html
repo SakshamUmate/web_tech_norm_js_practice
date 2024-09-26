@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+    <style>
+
+        body{
+            padding: auto;
+            margin: auto;
+            width: 50%;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+
+            box-shadow: 0 0 10px rgb(18, 16, 16);
+        }
+        img{
+            transition: width 0.5s, height 0.5s;
+
+        }
+        .small{
+            width: 100px !important;
+            height: 100px !important;
+
+        }
+        .large{
+            width: 300px !important;
+            height: 300px !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Images</h1>
+    <div class="images">
+    <img src="../images/f_1.avif" id="img1" onclick="resizeImage('img1')" alt="Nudels" width="200" height="200">
+    <br>
+    <img src="../images/f_2.webp" id="img2" onclick="resizeImage('img2')" alt="Burger" width="200" height="200">
+    </div>
+
+    <script>
+        function resizeImage(clickedId){
+            const img1 =document.getElementById('img1');
+            const img2 = document.getElementById('img2');
+
+            if (clickedId == 'img1'){
+                img1.classList.add('small');
+                img1.classList.remove('large');
+                img2.classList.add('large');
+                img2.classList.remove('small');
+            }
+            else{
+                img1.classList.add('large');
+                img1.classList.remove('small');
+                img2.classList.add('small');
+                img2.classList.remove('large');
+            }
+        }
+
+    </script>
+</body>
+</html>

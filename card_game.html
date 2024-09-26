@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Cards Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .card-input {
+            margin: 10px;
+            font-size: 18px;
+            width: 50px;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .output {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Play Cards</h1>
+    <input type="number" class="card-input" id="card1" min="1" max="13" placeholder="1">
+    <input type="number" class="card-input" id="card2" min="1" max="13" placeholder="2">
+    <input type="number" class="card-input" id="card3" min="1" max="13" placeholder="3">
+    <input type="number" class="card-input" id="card4" min="1" max="13" placeholder="4">
+    <input type="number" class="card-input" id="card5" min="1" max="13" placeholder="5">
+    <br>
+    <button class="btn" onclick="selectCards()">Select Cards</button>
+    <button class="btn" onclick="sortCards()">Sort</button>
+    <div class="output">SUM: <span id="sum"></span></div>
+
+    <script>
+        let cards = [];
+
+        function selectCards() {
+            cards = [
+                parseInt(document.getElementById('card1').value) || 0,
+                parseInt(document.getElementById('card2').value) || 0,
+                parseInt(document.getElementById('card3').value) || 0,
+                parseInt(document.getElementById('card4').value) || 0,
+                parseInt(document.getElementById('card5').value) || 0,
+            ];
+            document.getElementById('sum').textContent = cards.reduce((a, b) => a + b, 0);
+        }
+
+        function sortCards() {
+            if (cards.length === 0) {
+                alert("Please select cards first.");
+                return;
+            }
+            const sortedCards = [...cards].sort((a, b) => a - b);
+            alert("Sorted Cards: " + sortedCards.join(', '));
+        }
+    </script>
+</body>
+</html>
